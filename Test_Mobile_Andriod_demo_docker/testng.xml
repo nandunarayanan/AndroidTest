@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Android_Demo">
+  <test thread-count="5" name="Mobile_Android">
+ 	<parameter name="F_name" value="Ram"/>
+	<parameter name="L_name" value="Rahul"/>
+    <classes>
+      <class name="test_scripts.DP_Home_Screen"/>
+    </classes>
+  </test> <!-- Mobile_Android -->
+</suite> <!-- Android_Demo -->
