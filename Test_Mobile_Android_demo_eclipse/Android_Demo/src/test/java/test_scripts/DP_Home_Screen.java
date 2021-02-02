@@ -38,7 +38,6 @@ public class DP_Home_Screen
 	static int count_1 = 0;
 	public AppiumDriver<MobileElement> driver;
 	
-	
 	/*Data provider with excel settings in the name of PatientData*/
 	@DataProvider
 	public Object[][] PatientData() 
@@ -46,8 +45,8 @@ public class DP_Home_Screen
 	  try
 		{
 		  	
-			ExcelUtils.setExcelFile("/src/Android_Demo/src/test/java/test_data/Test.xlsx","Sheet3");			
-			Object[][] testObjArray = ExcelUtils.getTableArray("/src/Android_Demo/src/test/java/test_data/Test.xlsx","Sheet3");		
+			ExcelUtils.setExcelFile("/home/318356/eclipse_snap_workspace/Android_Demo/src/test/java/test_data/Test.xlsx","Sheet3");			
+			Object[][] testObjArray = ExcelUtils.getTableArray("/home/318356/eclipse_snap_workspace/Android_Demo/src/test/java/test_data/Test.xlsx","Sheet3");		
 			return (testObjArray);	
 		}
 		
@@ -211,7 +210,7 @@ public class DP_Home_Screen
 		{
 		  
 		  Map<String, String> map;
-		  String path = "/src/Android_Demo/src/test/java/utility/test.yaml";
+		  String path = "/home/318356/eclipse_snap_workspace/Android_Demo/src/test/java/utility/test.yaml";
 		
 		  map = yamlLib.yamlRead(path);
 		  System.out.println("Path of the config"+map.get("path_config"));
