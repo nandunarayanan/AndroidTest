@@ -19,16 +19,21 @@ import org.testng.annotations.Test;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+
 import tcsLib.applicationLaunchLib;
+import tcsLib.dbUtils;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
+import org.json.simple.JSONObject;
 import org.testng.annotations.AfterTest;
 import tcsLib.screenshotLib;
 import tcsLib.yamlLib;
 import utility.ExcelUtils;
 
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
 
 import java.util.Map;
 /*Below class contains the test scripts for the Home screen*/
@@ -208,6 +213,12 @@ public class DP_Home_Screen
   {
 	  try
 		{
+		  DB db = dbUtils.dbGetDatabase("localhost", 27017, "MobileAppElementsRepo");
+		  DBCollection collection = db.getCollection("App1");
+		  dbUtils.InsertJsonData(collection, "/home/318356/eclipse_snap_workspace/Android_Demo/src/test/java/utility/test.json");
+		  JSONObject document = dbUtils.dbGetDoument(db,"App1",1, "/home/318356/eclipse_snap_workspace/Android_Demo/src/test/java/utility/json_array_output.json");
+          String text = dbUtils.dbGetElement(document, "LoginScreen", "Button" , "enabled");
+	      System.out.println("Text from method: "+text);
 		  
 		  Map<String, String> map;
 		  String path = "/home/318356/eclipse_snap_workspace/Android_Demo/src/test/java/utility/test.yaml";
