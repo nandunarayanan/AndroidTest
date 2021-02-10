@@ -217,7 +217,7 @@ public class DP_Home_Screen
 		{
 		  DB db = dbUtils.dbGetDatabase("10.10.196.130", 27017, "MobileAppElementsRepo");
 		  DBCollection collection = db.getCollection("App1");
-		  dbUtils.InsertJsonData(collection, "/src/Android_Demo/src/test/java/utility/test.json");
+		  dbUtils.InsertJsonData(collection, "/src/AndroidTest/Test_Mobile_Andriod_demo_docker/src/test/java/utility/test.json");
 		  document = dbUtils.dbGetDoument(db,"App1",1, "/src/AndroidTest/Test_Mobile_Andriod_demo_docker/src/test/java/utility/json_array_output.json");
           	  String text = dbUtils.dbGetElement(document, "LoginScreen", "Button" , "enabled");
 		  String e14_element = dbUtils.dbGetElement(document, "LoginScreen", "Button" , "e14");
