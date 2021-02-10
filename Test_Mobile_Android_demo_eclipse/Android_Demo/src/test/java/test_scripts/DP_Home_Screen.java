@@ -42,7 +42,7 @@ public class DP_Home_Screen
 {
 	static int count_1 = 0;
 	public AppiumDriver<MobileElement> driver;
-	
+	JSONObject document;
 	/*Data provider with excel settings in the name of PatientData*/
 	@DataProvider
 	public Object[][] PatientData() 
@@ -187,8 +187,11 @@ public class DP_Home_Screen
   public void DP_Home_Screen_TC_1() 
   {
 
+	/*  MobileElement el4 = (MobileElement) driver.findElementById
+			  			("us.drpad.drpadapp:id/lv_patient"); */
 	  MobileElement el4 = (MobileElement) driver.findElementById
-			  			("us.drpad.drpadapp:id/lv_patient");
+	  			((String) (dbUtils.dbGetElement(document, "LoginScreen", "Button" , "e14")));
+	  
 	  el4.click();
 	  MobileElement el5 = (MobileElement) driver.findElementById
 			  				("us.drpad.drpadapp:id/imgAddPatient");
@@ -214,10 +217,10 @@ public class DP_Home_Screen
 	  try
 		{
 		  DB db = dbUtils.dbGetDatabase("localhost", 27017, "MobileAppElementsRepo");
-		  DBCollection collection = db.getCollection("App1");
-		  dbUtils.InsertJsonData(collection, "/home/318356/eclipse_snap_workspace/Android_Demo/src/test/java/utility/test.json");
-		  JSONObject document = dbUtils.dbGetDoument(db,"App1",1, "/home/318356/eclipse_snap_workspace/Android_Demo/src/test/java/utility/json_array_output.json");
-          String text = dbUtils.dbGetElement(document, "LoginScreen", "Button" , "enabled");
+		//  DBCollection collection = db.getCollection("App1");
+		  //dbUtils.InsertJsonData(collection, "/home/318356/eclipse_snap_workspace/Android_Demo/src/test/java/utility/test.json");
+		  document = dbUtils.dbGetDoument(db,"App1",1, "/home/318356/eclipse_snap_workspace/Android_Demo/src/test/java/utility/json_array_output.json");
+          String text = dbUtils.dbGetElement(document, "LoginScreen", "Button" , "Text");
 	      System.out.println("Text from method: "+text);
 		  
 		  Map<String, String> map;
