@@ -51,8 +51,8 @@ public class DP_Home_Screen
 	  try
 		{
 		  	
-			ExcelUtils.setExcelFile("/src/Android_Demo/src/test/java/test_data/Test.xlsx","Sheet3");			
-			Object[][] testObjArray = ExcelUtils.getTableArray("/src/Android_Demo/src/test/java/test_data/Test.xlsx","Sheet3");		
+			ExcelUtils.setExcelFile("/src/AndroidTest/Test_Mobile_Andriod_demo_docker/src/test/java/test_data/Test.xlsx","Sheet3");			
+			Object[][] testObjArray = ExcelUtils.getTableArray("/src/AndroidTest/Test_Mobile_Andriod_demo_docker/src/test/java/test_data/Test.xlsx","Sheet3");		
 			return (testObjArray);	
 		}
 		
@@ -218,14 +218,14 @@ public class DP_Home_Screen
 		  DB db = dbUtils.dbGetDatabase("10.10.196.130", 27017, "MobileAppElementsRepo");
 		  DBCollection collection = db.getCollection("App1");
 		  dbUtils.InsertJsonData(collection, "/src/Android_Demo/src/test/java/utility/test.json");
-		  document = dbUtils.dbGetDoument(db,"App1",1, "/src/Android_Demo/src/test/java/utility/json_array_output.json");
+		  document = dbUtils.dbGetDoument(db,"App1",1, "/src/AndroidTest/Test_Mobile_Andriod_demo_docker/src/test/java/utility/json_array_output.json");
           	  String text = dbUtils.dbGetElement(document, "LoginScreen", "Button" , "enabled");
 		  String e14_element = dbUtils.dbGetElement(document, "LoginScreen", "Button" , "e14");
 		  System.out.println("element id :"+e14_element);
 	          System.out.println("Text from method: "+text);
 		  
 		  Map<String, String> map;
-		  String path = "/src/Android_Demo/src/test/java/utility/test.yaml";
+		  String path = "/src/AndroidTest/Test_Mobile_Andriod_demo_docker/src/test/java/utility/test.yaml";
 		
 		  map = yamlLib.yamlRead(path);
 		  System.out.println("Path of the config"+map.get("path_config"));
