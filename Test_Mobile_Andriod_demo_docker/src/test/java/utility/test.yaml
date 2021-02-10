@@ -1,2 +1,2 @@
-path_config : /src/Android_Demo/src/test/java/utility/config.properties
+path_config : /src/AndroidTest/Test_Mobile_Andriod_demo_docker/src/test/java/utility/config.properties
 app_id : dr_pad
