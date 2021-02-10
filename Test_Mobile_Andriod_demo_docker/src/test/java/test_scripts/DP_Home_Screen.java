@@ -29,6 +29,11 @@ import tcsLib.screenshotLib;
 import tcsLib.yamlLib;
 import utility.ExcelUtils;
 
+/*Db Utils related libraries*/
+import tcsLib.dbUtils;
+import org.json.simple.JSONObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
 
 import java.util.Map;
 /*Below class contains the test scripts for the Home screen*/
@@ -37,7 +42,7 @@ public class DP_Home_Screen
 {
 	static int count_1 = 0;
 	public AppiumDriver<MobileElement> driver;
-	
+	JSONObject document;
 	
 	/*Data provider with excel settings in the name of PatientData*/
 	@DataProvider
@@ -182,9 +187,10 @@ public class DP_Home_Screen
   		+ "description facility")
   public void DP_Home_Screen_TC_1() 
   {
-
-	  MobileElement el4 = (MobileElement) driver.findElementById
-			  			("us.drpad.drpadapp:id/lv_patient");
+	  /*MobileElement el4 = (MobileElement) driver.findElementById
+			  			("us.drpad.drpadapp:id/lv_patient"); */
+	MobileElement el4 = (MobileElement) driver.findElementById
+	  			((String) (dbUtils.dbGetElement(document, "LoginScreen", "Button" , "e14")));
 	  el4.click();
 	  MobileElement el5 = (MobileElement) driver.findElementById
 			  				("us.drpad.drpadapp:id/imgAddPatient");
@@ -209,6 +215,14 @@ public class DP_Home_Screen
   {
 	  try
 		{
+		  DB db = dbUtils.dbGetDatabase("10.10.196.130", 27017, "MobileAppElementsRepo");
+		  DBCollection collection = db.getCollection("App1");
+		  dbUtils.InsertJsonData(collection, "/src/Android_Demo/src/test/java/utility/test.json");
+		  document = dbUtils.dbGetDoument(db,"App1",1, "/src/Android_Demo/src/test/java/utility/json_array_output.json");
+          	  String text = dbUtils.dbGetElement(document, "LoginScreen", "Button" , "enabled");
+		  String e14_element = dbUtils.dbGetElement(document, "LoginScreen", "Button" , "e14");
+		  System.out.println("element id :"+e14_element);
+	          System.out.println("Text from method: "+text);
 		  
 		  Map<String, String> map;
 		  String path = "/src/Android_Demo/src/test/java/utility/test.yaml";
